@@ -1,0 +1,878 @@
+* {
+    font-family: sans-serif;
+    scroll-behavior: smooth;
+    box-sizing: border-box;
+    overscroll-behavior-y: inherit;
+}
+
+body {
+    margin: auto;
+}
+
+.khung {
+    width: 100%;
+    margin: auto;
+    background-size: cover;
+    min-width: 98vw;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/*tắt icon tăng giảm*/
+input[type=number]::-webkit-outer-spin-button,
+input[type=number]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/*header*/
+.header {
+    width: 100%;
+    height: 60px;
+    display: flex;
+    flex-direction: row;
+    background-color: black;
+    margin: auto;
+    position: fixed;
+    top: 0;
+    margin: auto;
+    z-index: 999;
+}
+/*menu header*/
+.menu_header {
+    width: 450px;
+    margin: auto;
+    display: flex;
+    margin: auto;
+    margin-left: 40px;
+}
+
+.a_menu_header {
+    position: relative;
+    display: inline-block;
+    margin: auto;
+    font-weight: bold;
+    color: white;
+    text-decoration: none;
+    transition: ease 0.6s all;
+}
+
+    .a_menu_header::after {
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        width: 0;
+        height: 2.3px;
+        content: "";
+        background-color: #ffa827;
+        transition: ease 0.6s all;
+    }
+
+    .a_menu_header:hover {
+        color: #ffa827;
+    }
+
+        .a_menu_header:hover::after {
+            width: 100%;
+        }
+
+/*mennu header 2*/
+.menu_header_2 {
+    width: 190px;
+    margin: auto;
+    display: flex;
+}
+
+.a_menu_header_2 {
+    position: relative;
+    display: block;
+    margin: auto;
+    font-weight: bold;
+    color: white;
+    text-decoration: none;
+    transition: ease 0.6s all;
+    font-size: 17px;
+    border: none;
+    background: none;
+    outline: none;
+    cursor: pointer;
+}
+
+    .a_menu_header_2::after {
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        width: 0;
+        height: 2.3px;
+        content: "";
+        background-color: #ffa827;
+        transition: ease 0.6s all;
+    }
+
+    .a_menu_header_2:hover {
+        color: #ffa827;
+    }
+
+        .a_menu_header_2:hover::after {
+            width: 100%;
+        }
+.menu-tentk { /*hien thi tai khoan*/
+    color: white;
+    margin: auto;
+    margin-right:10px;
+    color: red;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+    .menu-tentk img {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        margin: auto;
+        margin-right: 7px;
+        box-shadow:0 0 3px  #00c3ff;
+    }
+    .menu-tentk p{
+        margin:auto;
+        height:10px;
+    }
+.logout-div{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+.logout-div p{
+    margin:auto;
+    display:block;
+    height:24px;
+}
+
+/*phần tìm kiếm*/
+.header2 {
+    margin: auto;
+    margin-top: 60px;
+    width: 100%;
+    height: 90px;
+    background: rgba(0, 0, 0, 0.6); /*Màu đen với độ mờ 50% */
+    display: flex;
+    box-sizing: inherit;
+}
+/*logo header*/
+.a_logo {
+    min-width: 150px;
+    min-height: 70px;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo_img {
+    width: 150px;
+    height: 70px;
+    object-fit: cover;
+}
+/*find*/
+.find_header {
+    margin: auto;
+}
+
+.search {
+    width: 610px;
+    height: 40px;
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+    border: 0.4px solid #5694b6;
+    outline: none;
+    text-indent: 10px;
+}
+
+@media(max-width:998px) {
+    .search {
+        width: 300px;
+    }
+}
+
+.bt-timkiem {
+    border: none;
+    width: 90px;
+    height: 39px;
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+    background-color: #525ee9;
+    color: white;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+    .bt-timkiem:hover {
+        transition: ease 0.6s all;
+        background-color: #5694b6;
+    }
+/*gio hang*/
+.gio-hang {
+    margin: auto;
+}
+
+.gio-hang-a {
+    display: block;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+    .gio-hang-a img {
+        width: 100%;
+        height: 100%;
+    }
+
+/*thong bao sai tk, mk*/
+#error-message{
+    color:red;
+}
+
+/*login-------------------------------------------------*/ /*dang nhap*/
+.form_login {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.4s ease-in-out;
+}
+
+.model_form_login {
+    background-color: white;
+    padding: 20px;
+    border-radius: 30px;
+    width: 450px;
+    height: 612px;
+    text-align: center;
+    transform: translateY(-30px) scale(0.8); /* Lúc ẩn: nhỏ lại + trượt lên */
+    transition: transform 0.4s ease-in-out, box-shadow 0.3s ease-in-out;
+    box-shadow: 0px 0px 0px rgba(0, 0, 0, 0); /* Ban đầu không có bóng */
+    display: flex;
+    flex-direction: column;
+}
+
+.form_login.show {
+    display: flex;
+    opacity: 1;
+}
+
+    .form_login.show .model_form_login {
+        transform: translateY(0) scale(1); /* Khi hiện: trượt xuống + phóng to */
+        box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.3); /* Tăng bóng đổ */
+    }
+
+.close {
+    position: absolute;
+    right: 14px;
+    top: 6px;
+    cursor: pointer;
+    font-size: 38px;
+    color: red;
+}
+
+    .close:hover {
+        transition: ease 0.6s all;
+        color: gray;
+    }
+/*input dang nhap*/
+.input-dangnhap {
+    width: 384px;
+    height: 48px;
+    border-radius: 10px;
+    text-indent: 10px;
+    border: 1.5px solid #dbd6d6;
+    outline: none;
+    background-color: #fafafc;
+    font-size: 16px;
+    margin-top: 23px;
+}
+
+#file-select-dk::file-selector-button {
+    width: 90px;
+    height: 38px;
+    border-radius: 10px;
+    background-color: #c810c9;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    color: white;
+    content: "chon anh";
+}
+
+#file-select-dk {
+    margin: auto;
+    margin-left: 0;
+    margin-top: 23px;
+    width: 279px;
+    cursor: pointer;
+}
+
+    #file-select-dk::file-selector-button:hover {
+        transition: ease 0.5s all;
+        color: black;
+        background-color: #ffa827;
+    }
+/*logo dang nhap*/
+.logo-dangnhap {
+    width: 170px;
+    height: 70px;
+    margin: auto;
+    margin-bottom: 0;
+    margin-top: 3px;
+}
+
+    .logo-dangnhap img {
+        object-fit: cover;
+        width: 100%;
+        height: 100%;
+        filter: saturate(2) hue-rotate(180deg) invert(2);
+        mix-blend-mode: multiply;
+    }
+/*bt_login*/
+.bt_submit_login {
+    border: none;
+    color: black;
+    font-weight: bold;
+    width: 384px;
+    height: 48px;
+    background-color: #00c3ff;
+    margin: auto;
+    margin-top: 44px;
+    border-radius: 10px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+    .bt_submit_login:hover {
+        transition: ease 0.6s all;
+        color: white;
+        background-color: #163d96;
+    }
+/*text phuong thuc dang nhap*/
+.text-phuong-thuc-dn {
+    margin: auto;
+    font-size: 14px;
+    display: flex;
+    color: #a5a9b4;
+}
+
+    .text-phuong-thuc-dn:before {
+        content: " ";
+        border-top: 1px solid #c1c3cb;
+        align-self: center;
+        display: block;
+        flex-grow: 1;
+        width: 100px;
+        margin-right: 9px;
+    }
+
+    .text-phuong-thuc-dn:after {
+        content: " ";
+        border-top: 1px solid #c1c3cb;
+        align-self: center;
+        display: block;
+        flex-grow: 1;
+        width: 100px;
+        margin-left: 9px;
+    }
+/*quen mat khau va dang ky*/
+.quen_mat_khau {
+    text-decoration: none;
+    color: #00c2fe;
+    font-size: 17px;
+    margin: auto;
+    margin-left: 0;
+}
+
+.dang_ky {
+    text-decoration: none;
+    color: #00c2fe;
+    font-size: 16px;
+    margin: auto;
+    margin-right: 0;
+    cursor: pointer;
+}
+
+    .dang_ky:hover {
+        transition: ease 0.3s all;
+        color: #2e84ed;
+    }
+/*dang ky-----------------------------------------------------------------------------*/
+#form-register {
+    z-index: 1000;
+}
+/*dang ky relative*/
+.dk-relative {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    width: auto;
+    height: auto;
+}
+/*div1 */
+.dangky-div1 {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+}
+
+#dk-2 {
+    display: none;
+}
+
+.dk-2-bt {
+    display: flex;
+    margin: auto;
+}
+
+.bt-pre {
+    width: 130px;
+    height: 48px;
+    background-color: #aeaeae;
+    margin-right: 20px;
+}
+
+.bt-next {
+    width: 130px;
+    height: 48px;
+    margin-left: 20px;
+}
+
+#dk-3 {
+    display: none;
+}
+
+.quen_mat_khau:hover {
+    transition: ease 0.3s all;
+    color: #2e84ed;
+}
+/*third login*/
+.third-login {
+    display: flex;
+    margin: auto;
+}
+
+.item-third-login {
+    width: 40px;
+    height: 40px;
+    margin: auto;
+    cursor: pointer;
+    border-radius: 50%;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+.google {
+    background-image: url(/HomeImage/icon/google.png);
+}
+
+.facebook {
+    background-image: url(/HomeImage/icon/facebook.png);
+}
+
+.apple {
+    background-image: url(/HomeImage/icon/apple.png);
+}
+
+.twitter {
+    background-image: url(/HomeImage/icon/x.png);
+}
+
+/*thong bao*/
+.thongbao {
+    display: none;
+    flex-direction: column;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    z-index: 1101;
+    width: 300px;
+    height: 190px;
+    box-shadow: 0px 0px 10px #00c2fe;
+    border-radius: 8px;
+    background-color: white;
+}
+
+#thongbao-text {
+    color: red;
+    font-size: 17px;
+    margin: auto;
+    width: 270px;
+    text-align: center;
+}
+
+.head-thongbao {
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    margin: auto;
+    margin-top: 0;
+    margin-bottom: 0;
+    width: 300px;
+    height: 37px;
+    color: white;
+    background-color: #257a2a;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 19px;
+    font-weight: bold;
+}
+
+.model-thongbao {
+    z-index: 1100;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: none;
+    background-color: black;
+    opacity: 60%;
+    width: 100%;
+    height: 100%;
+}
+/*diachi*/
+.diachi-coban{
+    display:flex;
+    width:384px;
+    margin-top:8px;
+}
+.diachi-coban-div1{
+    display:flex;
+    flex-direction:column;
+    margin:auto;
+}
+.diachi-coban-div1 label{
+    font-size:13.7px;
+    color:#777777;
+    margin-left:0;
+}
+.diachi-coban-div1 select{
+    margin-top:3px;
+    width:122px;
+    height:38px;
+    border-radius:5px;
+    border:0.5px solid rgba(0,0,0,0.2);
+    outline:none;
+}
+/*anh*/
+#file-select-dk{
+    width:0;
+    height:0;
+    margin:0;
+}
+.lb-anh{
+    display:block;
+    width:87px;
+    height:35px;
+    border-radius:5px;
+    background-color:#980987;
+    color:white;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    margin:auto
+}
+.dk-anh-div{
+    display:flex;
+    margin:auto;
+    margin-top:21px;
+}
+.file-pre-anh{
+    width:60px;
+    height:60px;
+    margin:auto;
+    border-radius:3px;
+    margin-left:20px;
+    display:none;
+    object-fit:contain;
+}
+#message-remk{
+    color:red;
+    font-size:13px;
+    margin:0;
+}
+#tentk-error{
+    margin:0;
+    text-align:center;
+    font-size:13px;
+    color:red;
+    display:none;
+}
+
+/*content 1----------*/
+.content1 {
+    position: relative;
+    width: 100%;
+    margin: auto;
+    overflow: hidden;
+}
+
+.slides-container {
+    width: 100%;
+    overflow: hidden;
+}
+
+.slides-wrapper {
+    display: flex;
+    width: 100%; 
+    transition: transform 0.5s ease-in-out;
+}
+
+.slide {
+    display: flex;
+    width:100%;
+    flex-shrink: 0;
+    justify-content:center;
+    gap:20px;
+}
+
+    .slide img {
+        width: 600px;
+        height: 500px;
+        object-fit: contain;
+    }
+
+@media(max-width:1200px){
+    .slide img{
+        width:400px;
+    }
+}
+@media(max-width:900px) {
+    .slide img {
+        width: 300px;
+    }
+}
+
+/* Nút điều hướng */
+.banner-pre, .banner-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 30px;
+    background-color: rgba(0,0,0,0.5);
+    color: white;
+    padding: 10px;
+    cursor: pointer;
+    user-select: none;
+}
+
+.banner-pre {
+    left:0;
+}
+
+.banner-next {
+    right: 0;
+}
+
+    .banner-pre:hover, .banner-next:hover {
+        background-color: rgba(0,0,0,0.8);
+    }
+/*len dau trang*/
+#scrollTopBtn {
+    font-family: "Segoe UI Symbol", "Arial Unicode MS", "Noto Sans", sans-serif;
+    display: none;
+    position: fixed;
+    bottom: 40px;
+    right: 30px;
+    z-index: 99;
+    font-size: 18px;
+    border: none;
+    outline: none;
+    background-color: #dd1019;
+    color: white;
+    cursor: pointer;
+    padding: 6px 12px;
+    border-radius: 3px;
+    transition: background-color 0.3s;
+}
+
+    #scrollTopBtn:hover {
+        background-color: #00c3ff;
+    }
+/*------------------------------------------*/
+
+
+
+
+
+
+/*footer*-----------------------------------------------------------*/
+.footer {
+    box-sizing: inherit;
+    width: 100%;
+    height: auto;
+    background-color: #11121a; /* a80= ~30% */
+    margin: auto;
+    border-top: 3px solid #269ef9;
+}
+/*footer 1*/
+.footer1 {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.f-div1 {
+    display: flex;
+    margin: auto;
+    gap: 90px;
+    margin-top: 50px;
+}
+
+.f-div1-a {
+    display: block;
+    width: 75px;
+    height: 75px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1.9px solid #37383e;
+    background-color: #0f1017;
+}
+
+    .f-div1-a:hover {
+        transition: ease 0.4s all;
+        background-color: black;
+        border-color: #2a2a2a;
+        box-shadow: 0px 0px 6px #00c2fe;
+    }
+
+        .f-div1-a:hover img {
+            filter: invert(1);
+            transition: ease 0.5s all;
+        }
+
+    .f-div1-a img {
+        width: 40px;
+        height: 40px;
+        filter: invert(0.4);
+        transition: ease 0.5s all;
+    }
+
+.f-div1 h2 {
+    font-weight: bold;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    font-size: 22px;
+    margin: auto;
+}
+
+    .f-div1 h2:after {
+        content: " ";
+        width: 100%;
+        border: 2px solid white;
+        margin-top: 5px;
+    }
+
+.f-div1-div {
+    display: flex;
+    gap: 60px;
+    margin: auto;
+    margin-top: 10px;
+}
+
+.f-div2 {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    margin-top: 0;
+}
+
+    .f-div2 h1 {
+        font-weight: bold;
+        color: white;
+        display: flex;
+        flex-direction: column;
+        font-size: 22px;
+    }
+
+    .f-div2 p {
+        color: #919195;
+        margin: auto;
+        margin-top: 5px;
+        margin-left: 0;
+    }
+
+    .f-div2 h1:after {
+        content: " ";
+        width: 100%;
+        border: 2px solid white;
+        margin-top: 5px;
+    }
+
+.f-div3 {
+    display: flex;
+    gap: 10px;
+}
+
+    .f-div3 img {
+        width: 70px;
+        height: 20px;
+        margin-top: 10px;
+    }
+
+/*final footer*/
+.final-footer {
+    background-color: #000000;
+    width: 100%;
+    height: auto;
+    border-top: 2px solid #414141;
+    margin: auto;
+    margin-top: 80px;
+    display: flex;
+    flex-direction: column;
+}
+
+.f2-div1 {
+    margin: auto;
+    margin-top: 20px;
+}
+
+.img1 {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.img2 {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Giữ tỷ lệ khung hình của ảnh*/
+}
+
+.f2-div1 a {
+    color: #aeaeae;
+    text-decoration: none;
+    margin-left: 8px;
+    margin-right: 8px;
+}
+
+    .f2-div1 a:hover {
+        transition: ease 0.5s all;
+        color: #ffa827;
+    }
+
+.f2-div1 p {
+    color: #aeaeae;
+    font-size: 16px;
+}
+
